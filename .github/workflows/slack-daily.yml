@@ -2,7 +2,7 @@ name: Slack Daily Message
 
 on:
   schedule:
-cron: "*/5 * * * *"   # every 5 minutes (UTC); script gates by London time
+      - cron: "*/5 * * * *"   # every 5 minutes (UTC); script gates by London time
   workflow_dispatch:        # allow manual run from the Actions tab
 
 jobs:
@@ -11,12 +11,12 @@ jobs:
     permissions:
       contents: read
     steps:
-uses: actions/checkout@v4
-uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-run: python -m pip install -r requirements.txt
-name: Send Slack message (gated by local time)
+      - run: python -m pip install -r requirements.txt
+      - name: Send Slack message (gated by local time)
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
