@@ -5,8 +5,8 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 # ---- CONFIG ----
 TIMEZONE = "Europe/London"
-SEND_AT_HOUR = 8     # 09:00 London local time
-SEND_AT_MINUTE = 0
+SEND_AT_HOUR = <current hour>     # 09:00 London local time
+SEND_AT_MINUTE = <current minute + 1>
 SKIP_WEEKENDS = False  # set True to skip Sat/Sun
 # Env vars from GitHub Secrets
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")  # xoxb-...
@@ -48,9 +48,9 @@ def post_to_slack(text: str):
         # surfacing the Slack error message helps debugging in Actions logs
         raise SystemExit(f"Slack error: {e.response.get('error')}")
 def main():
-    print("DEBUG: starting main()")
-    print("DEBUG: token present:", bool(SLACK_BOT_TOKEN))
-    print("DEBUG: channel id:", CHANNEL_ID)
-    post_to_slack("TEST WHS MESSAGE FROM GITHUB ACTIONS :rotating_light::rotating_light:")
+    if not should_send_now():
+        return
+    post_to_slack(pick_message_for_today())
+    
 if __name__ == "__main__":
     main()
