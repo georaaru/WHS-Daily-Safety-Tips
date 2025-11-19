@@ -2,7 +2,7 @@ name: Slack Daily Message
 
 on:
   schedule:
-      - cron: "40 12 * * *"   # run once per day at 11:00 UTC
+      - cron: "0 15 * * *"   # run once per day at 11:00 UTC
   workflow_dispatch:
 
 jobs:
