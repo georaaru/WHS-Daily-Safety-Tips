@@ -48,8 +48,9 @@ def post_to_slack(text: str):
         # surfacing the Slack error message helps debugging in Actions logs
         raise SystemExit(f"Slack error: {e.response.get('error')}")
 def main():
-    if not should_send_now():
-        return
-    post_to_slack("Test WHS message from Github actions.")
+    print("DEBUG: starting main()")
+    print("DEBUG: token present:", bool(SLACK_BOT_TOKEN))
+    print("DEBUG: channel id:", CHANNEL_ID)
+    post_to_slack("TEST WHS MESSAGE FROM GITHUB ACTIONS :rotating_light::rotating_light:")
 if __name__ == "__main__":
     main()
