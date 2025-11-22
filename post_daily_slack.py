@@ -7,14 +7,21 @@ from slack_sdk.errors import SlackApiError
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")  # xoxb-...
 CHANNEL_ID = os.environ.get("SLACK_CHANNEL_ID")      # C0123ABCD
 
-# Your rotating WHS tips
+# Rotating WHS tips
 MESSAGES = [
-    "Daily WHS Tip: Report hazards early – small issues prevent big incidents. :safety_vest:",
-    "Daily WHS Tip: Use proper lifting technique – bend your knees, keep the load close.",
-    "Daily WHS Tip: Maintain 3 points of contact on stairs and ladders. No shortcuts.",
-    "Daily WHS Tip: Keep walkways clear to reduce trips and falls. Tidy as you go.",
-    "Daily WHS Tip: PPE is your last line of defence – wear it correctly and consistently.",
-    "Daily WHS Tip: Stop work if it’s unsafe. Safety always beats speed.",
+    "*Safe to Go Tip:* Use your powerzone: Keeping items in your powerzone — the area from mid-thigh to mid-chest — helps you stay safe when lifting, lowering, and turning.",
+   
+    "*Safe to Go Tip:* The right equipment for the job: Using correct personal protective equipment (PPE), like gloves for proper grasping, reduces the risk of musculoskeletal disorders (MSDs) such as sprains and strains.",
+   
+    "*Safe to Go Tip:* Switch sides: Alternating between your left and right sides helps your body maintain balance and reduces strain.",
+   
+    "*Safe to Go Tip:* Practise the team lift: Test the weight before lifting and use both hands. Ask for help if an item is too heavy or awkward.",
+   
+    "*Safe to Go Tip:* Stretch it out: Stretch before and after work to reduce fatigue and improve range of motion.",
+   
+    "*Safe to Go Tip:* Select the right tool: Use the correct equipment in the proper way to reduce effort and avoid unnecessary strain.",
+   
+    "*Safe to Go Tip:* Reduce exposure to MSD risk factors: Test the weight of items before lifting, keep them close to your body, and take micro-breaks to stretch while working.",
 ]
 
 def pick_message_for_today() -> str:
